@@ -7,17 +7,18 @@ import os
 # Load dataset
 dataset_path = os.path.join(settings.BASE_DIR, 'prediction', 'static', 'dataset', 'Body Measurements _ original_CSV.csv')
 # /home/vedant/Desktop/find_your_fit_ai/backend/prediction/static/dataset/Body Measurements _ original_CSV.csv
-df = pd.read_csv('/home/vedant/Desktop/find_your_fit_ai/backend/prediction/static/dataset/Body Measurements _ original_CSV.csv')
+#/home/vedant/Desktop/find_your_fit_ai/backend/prediction/static/dataset/synthetic_body_measurements.csv
+df = pd.read_csv('/home/vedant/Desktop/find_your_fit_ai/backend/prediction/static/dataset/synthetic_body_measurements.csv')
 
 # Clean dataset (Drop rows with NaN values)
-df = df.dropna(subset=['TotalHeight', 'ShoulderWidth' ])
+df = df.dropna(subset=['Height_cm', 'ShoulderWidth_cm' ])
 print(df.columns)
 df.columns = df.columns.str.strip()
 
 
 # Features and Target
-X = df['TotalHeight'].values.reshape(-1, 1)
-y = df[['ShoulderWidth', 'ChestWidth', 'Waist']].values
+X = df['Height_cm'].values.reshape(-1, 1)
+y = df[['ShoulderWidth_cm', 'ChestWidth_cm', 'Waist_cm']].values
 
 # Train the model
 model = LinearRegression().fit(X, y)
