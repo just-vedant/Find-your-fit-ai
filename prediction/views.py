@@ -17,7 +17,8 @@ def size_prediction(request):
                 shoulder_width=prediction['shoulder_width'],
                 chest=prediction['chest'],
                 waist=prediction['waist'],
-                size=prediction['size']
+                size=prediction['size'],
+                fit_type=prediction['fit_type']
             )
             return JsonResponse(prediction)
     return JsonResponse({'error': 'Invalid Request'}, status=400)
