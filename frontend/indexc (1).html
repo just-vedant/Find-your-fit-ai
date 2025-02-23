@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Suggestions</title>
+    <link rel="stylesheet" href="stylesc.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Perfect Style</h1>
+
+        <!-- Color Selection Section -->
+        <div class="section">
+            <h2>Select Your Favorite Color</h2>
+            <div class="input-group">
+                <label for="colorSelect">Choose Your Favorite Color:</label>
+<select id="colorSelect">
+    <option value="" disabled selected>Select a color</option>
+    <option value="white" style="background-color: white; color: black;">⚪ White</option>
+    <option value="yellow" style="background-color: yellow; color: black;">🟡 Yellow</option>
+    <option value="pink" style="background-color: pink; color: black;">🎀 Pink</option>
+    <option value="orange" style="background-color: orange; color: black;">🟠 Orange</option>
+    <option value="green" style="background-color: green; color: white;">🟢 Green</option>
+    <option value="blue" style="background-color: blue; color: white;">🔵 Blue</option>
+    <option value="purple" style="background-color: purple; color: white;">🟣 Purple</option>
+    <option value="red" style="background-color: red; color: white;">🔴 Red</option>
+    <option value="brown" style="background-color: brown; color: white;">🟤 Brown</option>
+    <option value="black" style="background-color: black; color: white;">⚫ Black</option>
+</select>
+
+            </div>
+            <button onclick="getStyleSuggestion()">Get Suggestions</button>
+
+<div id="suggestion"></div>
+<div id="imageContainer"></div>
+<div id="colorPalette"></div>
+
+        <hr>
+
+        <!-- Body Type and Gender Selection -->
+        <div class="section">
+            <h2>Find Clothes for Your Body Type</h2>
+
+            <div class="input-group">
+                <label for="genderSelect">Select Gender:</label>
+                <select id="genderSelect">
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="male">👨 Male</option>
+                    <option value="female">👩 Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="bodyTypeSelect">Choose Your Body Type:</label>
+                <select id="bodyTypeSelect">
+                    <option value="" disabled selected>Select a body type</option>
+                    <option value="ectomorph">🏃‍♂️ Ectomorph</option>
+                    <option value="endomorph">🍩 Endomorph</option>
+                    <option value="hourglass">⏳ Hourglass</option>
+                    <option value="inverted_triangle">🔻 Inverted Triangle</option>
+                    <option value="mesomorph">💪 Mesomorph</option>
+                    <option value="oval">⚫ Oval</option>
+                    <option value="rectangle">🔲 Rectangle</option>
+                    <option value="trapezoid">🔳 Trapezoid</option>
+                    <option value="triangle">🔺 Triangle</option>
+                </select>
+            </div>
+
+            <button onclick="getBodyTypeSuggestion()">Get Clothing Tips</button>
+            <div id="bodySuggestion"></div>
+        </div>
+    </div>
+
+    <script src="scriptc.js"></script>
+</body>
+</html>

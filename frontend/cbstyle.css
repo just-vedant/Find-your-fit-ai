@@ -1,0 +1,136 @@
+/* Chatbot Button */
+#chatbot-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d0a933;
+    color: white;
+    border: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Chatbot Container - Proper Structure */
+#chatbot-container {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    height: 350px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Chatbot Header */
+#chatbot-header {
+    background: #d0a933;
+    color: white;
+    padding: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ✅ Chat Messages - Expands to Fill Space */
+#chat-messages {
+    flex-grow: 1;  /* Takes up available space */
+    overflow-y: auto;
+    padding: 8px;
+    font-size: 12px;
+    background: #ffffff;
+}
+
+/* ✅ Chat Input - Sticks to Bottom */
+#chat-input-container {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background: white;
+    flex-shrink: 0; /* Prevents shrinking */
+    margin-top: auto; /* Pushes it to the bottom */
+}
+
+/* Input Box */
+#chat-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* Send Button */
+#send-button {
+    background: #d0a933;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* User Message Styling */
+.user-message {
+    background-color: #d0a933;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    align-self: flex-end;
+    max-width: 75%;
+}
+
+/* Bot Message Styling */
+.bot-message {
+    background-color: #f1f1f1;
+    color: black;
+    padding: 8px 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    align-self: flex-start;
+    max-width: 75%;
+}
+
+/* Add spacing between messages */
+#chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+
+
+/* Make bold text stand out */
+.bot-message b {
+    color: #d08522;
+    font-weight: bold;
+}
+
+/* Italics */
+.bot-message i {
+    font-style: italic;
+    color: #555;
+}
+
+/* Code formatting */
+.bot-message code {
+    background-color: #eee;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #d63384;
+}
+}
+
+
+
