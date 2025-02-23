@@ -1,4 +1,3 @@
-<!-- clothes.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,156 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothes Size Finder</title>
     <link rel="stylesheet" href="BodyMeasurements.css">
-    <script>
-        function calculateSize() {
-            let height = parseFloat(document.getElementById('height').value);
-            let weight = parseFloat(document.getElementById('weight').value);
-            let size = "";
-            
-            if (height && weight) {
-                if (height < 160 || weight < 50) size = "XS";
-                else if (height < 170 || weight < 65) size = "S";
-                else if (height < 180 || weight < 80) size = "M";
-                else if (height < 190 || weight < 95) size = "L";
-                else size = "XL";
-                
-                document.getElementById('result').innerText = "Recommended Size: " + size;
-            } else {
-                document.getElementById('result').innerText = "Please enter valid values.";
-            }
-        }
-    </script>
 </head>
 <body>
-    <body>
-        <div class="container">
-            <div class="card">
-                <div class="content">
-                    <h2 class="title">Clothes Size Finder</h2>
-                    <form>
-                        <label for="height">Height (cm):</label>
-                        <br>
-                        <input type="number" id="height" required>
-                        <br>
-                        <label for="weight">Weight (kg):</label>
-                        <br>
-                        <input type="number" id="weight" required>
-                        <br>
-                        <br>
-                        <button type="button" onclick="calculateSize()">Find Size</button>
-                        <br>
-                        <p id="result"></p>
-                        <br>
-                            <button type="button" onclick="window.location.href='style_suggestions.html'">Personalised Suggestions</button>
-                        <br>
-                    </form>
-                    <a href="homepage.html">
-                        <img src="\Users\rohit\Desktop\Hackx\home.png" alt="Home" width="30" height="30">
-                    </a>
+    <div class="container">
+        <div class="card">
+            <div class="content">
+                <h2 class="title">Clothes Size Finder</h2>
+                <div id="sizeForm">
+                    <label for="height">Height (cm):</label><br>
+                    <input type="number" id="height" required><br>
+                    <label for="weight">Weight (kg):</label><br>
+                    <input type="number" id="weight" required><br><br>
+                    <button type="button" id="calculateSizeBtn">Find Size</button>
+                    <span id="loading" class="loading" style="display: none;">Calculating...</span><br>
+                    <p id="result"></p><br>
+                    <button type="button" onclick="window.location.href='style_suggestions.html'">Personalised Suggestions</button><br>
                 </div>
+                <button type="button" onclick="window.location.href='index.html'">Know Your Body Type</button>
+                <a href="homepage.html">
+                    <img src="home.png" alt="Home" width="30" height="30">
+                </a>
             </div>
         </div>
-    </body>
+    </div>
 
-     <!-- Chatbot Image Icon -->
-     <img src="\Users\rohit\Desktop\Hackx\chatbot.png" id="chatbot-icon" alt="Chat" width="50" height="50" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;">
+    <!-- Chatbot Image Icon -->
+    <img src="chatbot.png" id="chatbot-icon" alt="Chat" width="50" height="50" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;">
 
-     <!-- Chatbot Container -->
-     <div id="chatbot-container">
-         <div id="chatbot-header">
-             <span>CHAT BOT</span>
-             <button id="minimize-chat">−</button>
-         </div>
-         <div id="chat-messages"></div>
-         <div id="chat-input-container">
-             <input type="text" id="chat-input" placeholder="Ask anything ...">
-             <button id="send-button">Send</button>
-         </div>
-     </div>
- 
-     <script>
-         // Select chatbot elements
-         const chatContainer = document.getElementById("chatbot-container");
-         const chatInput = document.getElementById("chat-input");
-         const sendButton = document.getElementById("send-button");
-         const chatMessages = document.getElementById("chat-messages");
- 
-         document.getElementById("chatbot-icon").addEventListener("click", function () {
-             chatContainer.style.display = chatContainer.style.display === "none" || chatContainer.style.display === "" ? "flex" : "none";
-         });
- 
-         document.getElementById("minimize-chat").addEventListener("click", function () {
-             chatContainer.style.display = "none";
-         });
- 
-         async function getGeminiResponse(userInput) {
-             const GEMINI_API_KEY = "AIzaSyB91YbLca7ji9PXVISct-tmlFDl5OTqy2A";
-             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
- 
-             const requestBody = {
-                 contents: [{ role: "user", parts: [{ text: userInput }] }]
-             };
- 
-             try {
-                 const response = await fetch(url, {
-                     method: "POST",
-                     headers: { "Content-Type": "application/json" },
-                     body: JSON.stringify(requestBody)
-                 });
- 
-                 const data = await response.json();
- 
-                 if (data.error) {
-                     return `Error: ${data.error.message}`;
-                 }
- 
-                 if (data.candidates && data.candidates.length > 0) {
-                     return data.candidates[0].content.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
-                 } else {
-                     return "No response received.";
-                 }
-             } catch (error) {
-                 return "Error: Unable to fetch response.";
-             }
-         }
-         function formatText(text) {
-         // Prevent unwanted HTML tag display and ensure safe formatting
-         const tempDiv = document.createElement("div");
-         tempDiv.innerText = text;  // Encode raw text to prevent HTML injection
-         let safeText = tempDiv.innerHTML; // Get safe HTML version
- 
-         return safeText
-         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Convert **bold** to <strong>
-         .replace(/\*(.*?)\*/g, "<strong>$1</strong>") // Convert *bold* to <strong>
-         .replace(/_(.*?)_/g, "<em>$1</em>") // Convert _italic_ to <em>
-         .replace(/`(.*?)`/g, "<code>$1</code>") // Convert `code` to <code>
-         .replace(/<strong><\/strong>/g, ""); // Remove empty <strong> tags
-         }
- 
-         async function sendMessage() {
-             const userText = chatInput.value.trim();
-             if (userText === "") return;
- 
-             const userMessageElement = document.createElement("div");
-             userMessageElement.classList.add("user-message");
-             userMessageElement.innerText = userText;
-             chatMessages.appendChild(userMessageElement);
-             chatInput.value = "";
- 
-             const botMessageElement = document.createElement("div");
-             botMessageElement.classList.add("bot-message");
-             botMessageElement.innerHTML = "Thinking...";
-             chatMessages.appendChild(botMessageElement);
- 
-             const botResponse = await getGeminiResponse(userText);
-             botMessageElement.innerHTML = formatText(botResponse);
-             chatMessages.scrollTop = chatMessages.scrollHeight;
-         }
- 
-         sendButton.addEventListener("click", sendMessage);
-         chatInput.addEventListener("keypress", function (event) {
-             if (event.key === "Enter") sendMessage();
-         });
-     </script>
-<body>
+    <!-- Chatbot Container -->
+    <div id="chatbot-container" style="display: none;">
+        <div id="chatbot-header">
+            <span>CHAT BOT</span>
+            <button id="minimize-chat">−</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="Ask anything ...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Display saved result when page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedResult = localStorage.getItem("sizeResult");
+            const resultElement = document.getElementById("result");
+            if (savedResult) {
+                resultElement.textContent = savedResult;
+            }
+
+            // Restore last entered height
+            const savedHeight = localStorage.getItem("lastHeight");
+            if (savedHeight) {
+                document.getElementById("height").value = savedHeight;
+            }
+
+            document.getElementById("calculateSizeBtn").addEventListener("click", async function() {
+                const height = parseFloat(document.getElementById("height").value);
+                let bodyType = localStorage.getItem("bodyType");
+
+                // Save height for next time
+                localStorage.setItem("lastHeight", height);
+
+                // Show loading state
+                const loadingSpan = document.getElementById("loading");
+                loadingSpan.style.display = "inline-block";
+                
+                // If bodyType isn't specified, set default value
+                if (!bodyType) {
+                    bodyType = "regular_fit";
+                } else {
+                    bodyType = bodyType.split(": ")[1].split(" ")[0].toLowerCase();
+                }
+
+                if (height) {
+                    try {
+                        const response = await fetch("http://127.0.0.1:8000/api/predict-size/", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                height: height,
+                                body_type: bodyType
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+
+                        const data = await response.json();
+                        let resultText;
+                        if (data.error) {
+                            resultText = `Error: ${data.details}`;
+                        } else {
+                            resultText = `Predicted Size: ${data.size}, Fit Type: ${data.fit_type}`;
+                        }
+                        
+                        // Save result to localStorage
+                        localStorage.setItem("sizeResult", resultText);
+                        document.getElementById("result").textContent = resultText;
+                        
+                    } catch (error) {
+                        const errorText = `Request Failed: ${error.message}`;
+                        localStorage.setItem("sizeResult", errorText);
+                        document.getElementById("result").textContent = errorText;
+                    } finally {
+                        loadingSpan.style.display = "none";
+                    }
+                } else {
+                    const invalidText = "Please enter valid values.";
+                    localStorage.setItem("sizeResult", invalidText);
+                    document.getElementById("result").textContent = invalidText;
+                    loadingSpan.style.display = "none";
+                }
+            });
+        });
+
+        // Chatbot Logic remains unchanged
+        const chatContainer = document.getElementById("chatbot-container");
+        const chatInput = document.getElementById("chat-input");
+        const sendButton = document.getElementById("send-button");
+        const chatMessages = document.getElementById("chat-messages");
+
+        document.getElementById("chatbot-icon").addEventListener("click", function() {
+            chatContainer.style.display = chatContainer.style.display === "none" || chatContainer.style.display === "" ? "flex" : "none";
+        });
+
+        document.getElementById("minimize-chat").addEventListener("click", function() {
+            chatContainer.style.display = "none";
+        });
+
+        async function getGeminiResponse(userInput) {
+            const GEMINI_API_KEY = "AIzaSyB91YbLca7ji9PXVISct-tmlFDl5OTqy2A";
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`;
+
+            const requestBody = {
+                contents: [{ role: "user", parts: [{ text: userInput }] }]
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(requestBody)
+                });
+
+                const data = await response.json();
+                if (data.error) {
+                    return `Error: ${data.error.message}`;
+                }
+
+                if (data.candidates && data.candidates.length > 0) {
+                    return data.candidates[0].content.parts?.[0]?.text || "Sorry, I couldn't generate a response.";
+                } else {
+                    return "No response received.";
+                }
+            } catch (error) {
+                return "Error: Unable to fetch response.";
+            }
+        }
+
+        function formatText(text) {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerText = text;
+            let safeText = tempDiv.innerHTML;
+
+            return safeText
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                .replace(/\*(.*?)\*/g, "<strong>$1</strong>")
+                .replace(/_(.*?)_/g, "<em>$1</em>")
+                .replace(/`(.*?)`/g, "<code>$1</code>")
+                .replace(/<strong><\/strong>/g, "");
+        }
+
+        async function sendMessage() {
+            const userText = chatInput.value.trim();
+            if (userText === "") return;
+
+            const userMessageElement = document.createElement("div");
+            userMessageElement.classList.add("user-message");
+            userMessageElement.innerText = userText;
+            chatMessages.appendChild(userMessageElement);
+            chatInput.value = "";
+
+            const botMessageElement = document.createElement("div");
+            botMessageElement.classList.add("bot-message");
+            botMessageElement.innerHTML = "Thinking...";
+            chatMessages.appendChild(botMessageElement);
+
+            const botResponse = await getGeminiResponse(userText);
+            botMessageElement.innerHTML = formatText(botResponse);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        sendButton.addEventListener("click", sendMessage);
+        chatInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") sendMessage();
+        });
+    </script>
+</body>
 </html>

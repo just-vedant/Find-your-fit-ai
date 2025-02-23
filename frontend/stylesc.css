@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #000000; /* Black background */
+    text-align: center;
+    padding: 20px;
+    color: #d4af37; /* Golden text */
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    background: #1c1c1c; /* Dark blackish background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    color: #d4af37; /* Golden text */
+    border: 1px solid #d4af37; /* Golden border */
+}
+
+/* Headings */
+h1, h2 {
+    color: #d4af37; /* Golden text */
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Sections */
+.section {
+    background: #2c2c2c; /* Slightly lighter black */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    color: #d4af37; /* Golden text */
+    border: 1px solid #d4af37;
+}
+
+/* Labels & Select Dropdown */
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #d4af37; /* Golden text */
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d4af37; /* Golden border */
+    background-color: #1c1c1c;
+    color: #d4af37; /* Golden text */
+    font-size: 16px;
+}
+
+/* Button Styling */
+button {
+    background-color: #d4af37; /* Golden background */
+    color: #000000; /* Black text */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #c2952d; /* Darker gold */
+}
+
+/* Display Boxes */
+#suggestion, #bodySuggestion {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #d4af37; /* Golden text */
+    padding: 10px;
+    border-radius: 5px;
+    background: #1c1c1c; /* Dark background */
+    border: 1px solid #d4af37; /* Golden border */
+}
+
+/* Chatbot */
+#chatbot-icon {
+    border: 2px solid #d4af37; /* Golden border */
+    border-radius: 50%;
+    background-color: #1c1c1c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#chatbot-container {
+    background-color: #000000; /* Black background */
+    color: #d4af37; /* Golden text */
+    border: 2px solid #d4af37; /* Golden border */
+}
+
+#chatbot-header {
+    background-color: #d4af37; /* Golden background */
+    color: #000000; /* Black text */
+}
+
+#chat-messages {
+    background-color: #1c1c1c;
+    color: #d4af37;
+    border: 1px solid #d4af37; /* Golden border */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
