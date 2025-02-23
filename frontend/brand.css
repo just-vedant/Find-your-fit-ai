@@ -1,0 +1,65 @@
+/* General Styling */
+body {
+    background-color: #000;
+    color: #FFD700;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 400px;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    margin: auto;
+}
+
+/* Headings */
+h1 {
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+/* Labels and Inputs */
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+input[type="number"], select {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #FFD700;
+    background: #333;
+    color: #FFD700;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Button */
+button {
+    background-color: #FFD700;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #e6c200;
+}
+
+/* Result Display */
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #00FF00;
+}

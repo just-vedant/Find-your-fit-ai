@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Fit AI</title>
+    <link rel="stylesheet" href="brand.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Find Your Fit AI</h1>
+        <label for="brand">Select Brand:</label>
+        <select id="brand">
+            <option value="">Choose a Brand</option>
+            <option value="brandA">Brand A</option>
+            <option value="brandB">Brand B</option>
+            <option value="brandC">Brand C</option>
+        </select>
+
+        <label for="chest">Enter Chest Measurement (cm):</label>
+        <input type="number" id="chest" placeholder="Enter chest size" required>
+
+        <button onclick="getSize()">Find My Size</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="brand.js"></script>
+</body>
+</html>
